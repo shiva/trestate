@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import api from './api';
-import { addNotifier, getTasks, getTask } from './data';
+import { addNotifier, getTasks, getTask, getListing, getListings } from './data';
 import Notifier from './notifier';
 
 const PORT = process.env.PORT || 8102;
@@ -36,6 +36,31 @@ notifier.use('/api/task/:id', param => (
     return Promise.resolve(result);
   })
 ));
+
+addNotifier(
+  'listing',
+  (listing) => {
+    // this can be invoked multiple times as new requests happen
+    notifier.test((request) => {
+      // we should skip notify if the id of the task does not match the payload
+      if (request.path === '/api/listing/:id' && request.params.id !== listing.id) {
+        return false;
+      }
+      return true;
+    });
+  }
+);
+
+notifier.use('/api/listing', () => getListings());
+notifier.use('/api/listing/:id', param => (
+  getListing(param.id).then((result) => {
+    if (!result.listing) {
+      return Promise.reject({ statusCode: 404, message: 'Not Found' });
+    }
+    return Promise.resolve(result);
+  })
+));
+
 
 const app = express()
   .use(compression())

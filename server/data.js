@@ -1,6 +1,7 @@
 const _sessions = {};
 const _notifiers = {
-  task: []
+  task: [],
+  listing: []
 };
 
 export const tasks = [
@@ -29,6 +30,34 @@ export const tasks = [
     status: 'Waiting'
   }
 ];
+
+export const listings = [
+  {
+    id: 'listing-1',
+    name: 'Listing 1',
+    percentComplete: 0,
+    status: 'Waiting'
+  },
+  {
+    id: 'listing-2',
+    name: 'Listing 2',
+    percentComplete: 0,
+    status: 'Waiting'
+  },
+  {
+    id: 'listing-3',
+    name: 'Listing 3',
+    percentComplete: 0,
+    status: 'Waiting'
+  },
+  {
+    id: 'listing-4',
+    name: 'Listing 4',
+    percentComplete: 0,
+    status: 'Waiting'
+  }
+];
+
 
 const increments = [5, 10, 20, 25];
 
@@ -103,4 +132,28 @@ export function getTask(id) {
   return Promise.resolve({ task });
 }
 
-export default { addNotifier, addSession, getSession, getTask, getTasks };
+export function getListings(filters) {
+  if (filters) {
+    return Promise.resolve({
+      listings: listings.filter(listing =>
+        Object.keys(filters).some(filter => listing[filter] === filters[filter])
+      )
+    });
+  }
+  return Promise.resolve({ listings });
+}
+
+export function getListing(id) {
+  let listing;
+  listings.some((l) => {
+    if (l.id === id) {
+      listing = l;
+      return true;
+    }
+    return false;
+  });
+  return Promise.resolve({ listing });
+}
+
+
+export default { addNotifier, addSession, getSession, getTask, getTasks, getListing, getListings };

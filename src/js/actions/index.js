@@ -15,6 +15,11 @@ export const TASKS_UNLOAD = 'TASKS_UNLOAD';
 export const TASK_LOAD = 'TASK_LOAD';
 export const TASK_UNLOAD = 'TASK_UNLOAD';
 
+// Listings
+export const LISTINGS_LOAD = 'LISTINGS_LOAD';
+export const LISTINGS_UNLOAD = 'LISTINGS_UNLOAD';
+export const LISTING_LOAD = 'LISTING_LOAD';
+export const LISTING_UNLOAD = 'LISTING_UNLOAD';
 // Nav
 export const NAV_ACTIVATE = 'NAV_ACTIVATE';
 export const NAV_ENABLE = 'NAV_ENABLE';

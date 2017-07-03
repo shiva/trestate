@@ -12,6 +12,8 @@ import Login from '../screens/Login';
 import Dashboard from '../screens/Dashboard';
 import Tasks from '../screens/Tasks';
 import Task from '../screens/Task';
+import Listings from '../screens/Listings';
+import Listing from '../screens/Listing';
 import NotFound from '../screens/NotFound';
 
 class Main extends Component {
@@ -48,6 +50,8 @@ class Main extends Component {
               <Route path='/login' component={Login} />
               <Route path='/tasks/:id' component={Task} />
               <Route path='/tasks' component={Tasks} />
+              <Route path='/listings/:id' component={Listing} />
+              <Route path='/listings' component={Listings} />
               <Route path='/*' component={NotFound} />
             </Switch>
           </Split>

@@ -1,5 +1,5 @@
 import express from 'express';
-import { addSession, getTasks, getTask } from './data';
+import { addSession, getTasks, getTask, getListing, getListings } from './data';
 
 const router = express.Router();
 
@@ -24,6 +24,20 @@ router.get('/task', (req, res) => {
 
 router.get('/task/:id', (req, res) => {
   getTask(req.params.id).then((result) => {
+    if (!result.task) {
+      res.status(404).end();
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+router.get('/listing', (req, res) => {
+  getListings(req.query).then(listings => res.json(listings));
+});
+
+router.get('/listing/:id', (req, res) => {
+  getListing(req.params.id).then((result) => {
     if (!result.task) {
       res.status(404).end();
     } else {

@@ -1,3 +1,4 @@
 module.exports = {
-  Tasks: 'Tarefas'
+  Tasks: 'Tarefas',
+  Listings: 'Listagens'
 };
