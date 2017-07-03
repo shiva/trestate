@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
-import { Router, createMemoryHistory } from 'react-router';
+import { Router } from 'react-router';
+import { createMemoryHistory } from 'history';
 
 import NavSidebar from '../../src/js/components/NavSidebar';
 import store from '../../src/js/store';

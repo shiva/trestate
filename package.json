@@ -2,9 +2,9 @@
   "name": "trestate",
   "version": "0.1.0",
   "main": "src/js/index.js",
-  "description": "",
-  "repository": "",
-  "license": "",
+  "description": "a",
+  "repository": "git@github.com:shiva/trestate.git",
+  "license": "MIT",
   "scripts": {
     "test": "grommet check",
     "dev-server": "nodemon ./server/dev",
@@ -80,5 +80,6 @@
   },
   "pre-commit": [
     "test"
-  ]
+  ],
+  "author": "Shiva <shiv@shiv.me>"
 }
