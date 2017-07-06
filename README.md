@@ -1,6 +1,8 @@
 # trestate
 
-This is a sample Grommet application for reference.
+[![Build Status](https://travis-ci.org/shiva/trestate.svg?branch=master)](https://travis-ci.org/shiva/trestate)
+
+A real-estate deal tracking tool.
 
 To run this application, execute the following commands:
 
