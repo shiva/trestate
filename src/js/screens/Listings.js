@@ -27,6 +27,11 @@ import {
 
 class Listings extends Component {
 
+  constructor() {
+    super();
+    this._loadHomes = this._loadHomes.bind(this);
+  }
+
   componentDidMount() {
     pageLoaded('Listings');
     this.props.dispatch(loadListings());
@@ -34,6 +39,11 @@ class Listings extends Component {
 
   componentWillUnmount() {
     this.props.dispatch(unloadListings());
+  }
+
+  _loadHomes(event) {
+    event.preventDefault();
+    this.props.loadHomes();
   }
 
   render() {
@@ -78,7 +88,7 @@ class Listings extends Component {
     const btnLoadItems = (
       <Box pad={{ horizontal: 'medium' }} align='start'>
         <Button icon={<AddIcon />} label='Load Homes'
-          onClick={this.testAction} href='#'
+          onClick={this._loadHomes} href='#'
           primary={true} />
       </Box>
     );
@@ -107,7 +117,8 @@ class Listings extends Component {
 Listings.propTypes = {
   dispatch: PropTypes.func.isRequired,
   error: PropTypes.object,
-  listings: PropTypes.arrayOf(PropTypes.object)
+  listings: PropTypes.arrayOf(PropTypes.object),
+  loadHomes: PropTypes.func.isRequired
 };
 
 Listings.contextTypes = {
